@@ -6,7 +6,10 @@ extends Control
 @onready var color: ColorPickerButton = $Panel/Color
 @onready var save_dialog: FileDialog = $GridContainer/Save/Save_dialog
 @onready var load_dialog: FileDialog = $GridContainer/Load/Load_dialog
+@onready var message: Label = $Message
+@onready var message_timer: Timer = $Message_Timer
 
+signal message_send
 
 var Name : String = ""
 var Content : String = ""
@@ -14,6 +17,15 @@ var Number : float
 var color_var : Color
 var color_var_store
 var data : Dictionary
+
+func _ready() -> void:
+	connect("message_send", handle_message)
+
+func handle_message():
+	message_timer.start()
+
+func _on_message_timer_timeout() -> void:
+	message.text = ""
 
 func _process(delta: float) -> void:
 	Name = _name.text
@@ -34,17 +46,27 @@ func save_data(path, data):
 	if file:
 		file.store_line(JSON.stringify(data))
 		file.close()
+		message.modulate = Color.AQUAMARINE
+		message.text = "Daten gespeichert!"
+		emit_signal("message_send")
 	else:
-		print("Fehler beim Öffnen der Datei zum Schreiben: ", FileAccess.get_open_error())
+		message.modulate = Color.BROWN
+		message.text = "Fehler beim Öffnen der Datei zum Schreiben"
+		emit_signal("message_send")
 
 func load_data(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file:
 		var data = file.get_as_text()
 		file.close()
+		message.modulate = Color.AQUAMARINE
+		message.text = "Daten geladen!"
+		emit_signal("message_send")
 		return data
 	else:
-		print("Fehler beim Öffnen der Datei zum Lesen: ", FileAccess.get_open_error())
+		message.modulate = Color.BROWN
+		message.text = "Fehler beim Öffnen der Datei zum Lesen"
+		emit_signal("message_send")
 		return ""
 
 func _on_save_dialog_file_selected(path: String) -> void:

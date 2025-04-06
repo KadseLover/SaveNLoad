@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bt1cntv0keyr5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd3fu"]
+bg_color = Color(0.2, 0.2, 0.2, 0.976471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23v3e"]
+bg_color = Color(0.162066, 0.162066, 0.162065, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1aya"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abrne"]
+bg_color = Color(0.2, 0.2, 0.2, 0.976471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4jqe"]
+bg_color = Color(0.113049, 0.113049, 0.113049, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2aw4"]
+bg_color = Color(0.163861, 0.163861, 0.163861, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6xh3"]
+bg_color = Color(0.2, 0.2, 0.2, 0.976471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6dyh"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxFlat_yd3fu")
+Button/styles/hover = SubResource("StyleBoxFlat_23v3e")
+Button/styles/normal = SubResource("StyleBoxFlat_k1aya")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_abrne")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_j4jqe")
+Panel/styles/panel = SubResource("StyleBoxFlat_y2aw4")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_c6xh3")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_t6dyh")
